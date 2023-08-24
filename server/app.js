@@ -24,7 +24,7 @@ app.use(express.json({ limit: "1MB" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://vinylrecordshop-fe.onrender.com"],
     credentials: true,
   })
 );
