@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "seed-records": "node seed/seed_db_records.js",
+    "seed-users": "node seed/seed_db_users.js",
+    "seed-faker": "node seed/seed_db_faker.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "clear": "^0.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "csrf": "^3.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "lowdb": "^6.0.1",
+    "mongoose": "^7.3.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2"
+  }
+}
