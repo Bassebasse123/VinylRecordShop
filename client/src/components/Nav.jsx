@@ -19,12 +19,10 @@ const Nav = () => {
   const location = useLocation();
 
   const UserLinks = () => {
-    const userCookie = Cookies.get("user");
-
     let firstLetter;
 
-    if (userCookie) {
-      firstLetter = JSON.parse(userCookie.slice(2)).firstName[0].toUpperCase();
+    if (Cookies.get("jwt")) {
+      firstLetter = usersState.user.firstName[0].toUpperCase();
     }
 
     const handleLogout = async () => {
@@ -42,7 +40,7 @@ const Nav = () => {
         <Link className='button-bg' onClick={handleLogout}>
           <p>Logout</p>
         </Link>
-        {userCookie && (
+        {Cookies.get("jwt") && (
           <Link to='/profile' className='nav-avatar'>
             {firstLetter}
           </Link>

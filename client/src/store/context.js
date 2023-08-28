@@ -6,6 +6,8 @@ import { usersInitialState, usersReducer } from "./reducers/usersReducer";
 import getAllRecords from "../apiCalls/recordsApiCalls";
 import { getCartData } from "../apiCalls/cartsApiCalls";
 import Cookies from "js-cookie";
+import { getMyData } from "../apiCalls/usersApiCalls";
+import { setAxiosDefaults } from "../utils/axiosConfig";
 
 export const DataContext = createContext();
 
@@ -28,22 +30,17 @@ const ContextProvider = ({ children }) => {
   const { isUserLoggedIn, user } = usersState;
 
   useEffect(() => {
+    setAxiosDefaults();
     getAllRecords(dispatchRecords);
+  }, []);
 
-    if (isUserLoggedIn && Cookies.get("jwt")) {
-      getCartData(dispatchCart, user.cartId);
-    }
+  useEffect(() => {
+    setAxiosDefaults();
+    isUserLoggedIn && getCartData(dispatchCart, user.cartId);
   }, [isUserLoggedIn, dispatchCart, user.cartId]);
 
   useEffect(() => {
-    const jwtCookie = Cookies.get("jwt");
-    const userCookie = Cookies.get("user");
-
-    if (jwtCookie && userCookie)
-      dispatchUsers({
-        type: "LOGIN_SUCCESS",
-        payload: JSON.parse(userCookie.slice(2)),
-      });
+    Cookies.get("jwt") && getMyData(dispatchUsers);
   }, [dispatchUsers]);
 
   return (

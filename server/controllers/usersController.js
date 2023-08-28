@@ -19,6 +19,14 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
+export const getMe = (req, res, next) => {
+  try {
+    successHandler(res, 200, req.user);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getUserById = async (req, res, next) => {
   try {
     isValidId(req);
@@ -28,15 +36,6 @@ export const getUserById = async (req, res, next) => {
     next(error);
   }
 };
-
-// export const getMe = async (req, res, next) => {
-//   try {
-//     req.params.id = req.user.id;
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 export const deleteAllUsers = async (req, res, next) => {
   try {

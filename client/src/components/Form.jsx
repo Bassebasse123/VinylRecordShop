@@ -1,9 +1,9 @@
-/* import { useContext } from "react";
-import { DataContext } from "../store/context"; */
+import { useContext } from "react";
+import { DataContext } from "../store/context";
 import { useForm } from "react-hook-form";
 
 const Form = ({ onSubmit, inputs, buttonText, heading }) => {
-  // const { usersState } = useContext(DataContext);
+  const { usersState } = useContext(DataContext);
   const {
     register,
     handleSubmit,
@@ -27,7 +27,7 @@ const Form = ({ onSubmit, inputs, buttonText, heading }) => {
           </div>
         </div>
       ))}
-      {/* {usersState.errorMessage && <span>{usersState.errorMessage}</span>} */}
+      {usersState.errorMessage && <span>{usersState.errorMessage}</span>}
 
       <div className='submit'>
         <input className='button-bg' type='submit' value={buttonText} />

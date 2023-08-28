@@ -31,7 +31,7 @@ app.use(
     credentials: true,
   })
 );
-// random comment
+
 //^ Routes handlers
 app.use("/records", recordsRouter);
 app.use("/carts", cartRouter);

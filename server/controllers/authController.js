@@ -38,9 +38,6 @@ const createSendToken = (user, statusCode, res) => {
 
   res.cookie("jwt", token, cookieOptions);
 
-  //!
-  res.cookie("user", user, cookieOptions);
-
   user.password = undefined;
 
   res.status(statusCode).json({
@@ -55,7 +52,6 @@ const createSendToken = (user, statusCode, res) => {
 
 const createCart = async (user) => {
   if (user.cartId) return;
-
   const newCart = await Cart.create({});
   user.cartId = newCart._id;
   await user.save();
@@ -92,7 +88,7 @@ export const login = async (req, res, next) => {
 
     const correct = await user.correctPassword(password, user.password);
     if (!correct) authError(401, "Incorrect email or password");
-
+    await createCart(user);
     createSendToken(user, 200, res);
   } catch (error) {
     next(error);

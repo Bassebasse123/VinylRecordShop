@@ -6,7 +6,7 @@ import {
   getUserById,
   updateUserById,
   deleteUserById,
-  // getMe,
+  getMe,
 } from "../controllers/usersController.js";
 
 import {
@@ -22,13 +22,15 @@ import sanitizeInput from "../middlewares/sanitizeInput.js";
 
 const router = express.Router();
 
-router.post("/signup", signup);
+router.post("/signup", sanitizeInput, validateInput, signup);
 router.post("/login", login);
 router.get("/logout", logout);
 
-// router.get("/me", getMe, getUserById);
+router.use(protect);
 
-router.use(protect, restrictTo("admin"));
+router.get("/me", getMe);
+
+router.use(restrictTo("admin"));
 
 router.route("/").get(getAllUsers).delete(deleteAllUsers);
 

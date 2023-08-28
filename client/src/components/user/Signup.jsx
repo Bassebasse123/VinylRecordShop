@@ -46,13 +46,13 @@ const Signup = () => {
       name: "email",
       placeholder: "Email",
       defaultValue: "test@test.com",
-      validation: {
-        required: "Please put your email sir.",
-        pattern: {
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          message: "Email is invalid. Please fix",
-        },
-      },
+      // validation: {
+      //   required: "Please put your email sir.",
+      //   pattern: {
+      //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      //     message: "Email is invalid. Please fix",
+      //   },
+      // },
     },
     {
       name: "password",

@@ -1,8 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
-
-const token = Cookies.get("jwt");
-axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 //! Add an item to the cart
 export const addCartItem = async (dispatchCart, cartState, record, cartID) => {
@@ -48,7 +44,6 @@ export const addCartItem = async (dispatchCart, cartState, record, cartID) => {
 export const getCartData = async (dispatchCart, cartID) => {
   try {
     const response = await axios.get(`/carts/${cartID}`);
-
     if (response.data.data && response.data.data.items) {
       dispatchCart({ type: "GET_CART_DATA", payload: response.data.data });
     }

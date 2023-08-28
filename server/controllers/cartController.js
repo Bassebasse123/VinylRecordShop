@@ -17,7 +17,6 @@ export const getCart = async (req, res, next) => {
 *     POST: http://localhost:8000/carts
 ^     req.body : {record:"existing-record-id"}
 */
-
 export const addCartItem = async (req, res, next) => {
   try {
     const { record, quantity } = req.body;

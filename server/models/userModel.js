@@ -20,7 +20,7 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   age: Number,
-  email: String,
+  email: { type: String, unique: true },
   password: String,
   passwordConfirm: String,
   avatarUrl: String,

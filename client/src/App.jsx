@@ -7,11 +7,9 @@ import RecordsList from "./components/records/RecordsList";
 import NotFound from "./components/NotFound";
 import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
-import { setAxiosDefaults } from "./utils/axiosConfig";
 // import Profile from "./components/user/Profile";
 
 const App = () => {
-  setAxiosDefaults();
   return (
     <div className='main'>
       <Nav />
