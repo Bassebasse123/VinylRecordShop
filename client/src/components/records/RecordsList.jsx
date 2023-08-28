@@ -13,22 +13,22 @@ const RecordsList = () => {
       setIsLoading(false);
     }, 1000);
   }, []);
+  console.log(recordsState);
 
   const filteredData = genre
     ? recordsState.data.data.filter(
         (record) => record.genre.toLowerCase() === genre.toLowerCase()
       )
     : recordsState.data.data;
-
+  console.log(filteredData);
   const containerWidth = cartState.isOpen ? `calc(100vw - 300px)` : "100%";
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return filteredData.length > 0 ? (
     <div
-      className='records-container'
+      className="records-container"
       style={{ width: containerWidth, transition: "1s" }}
     >
       {filteredData.map((record, index) => (
