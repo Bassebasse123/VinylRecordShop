@@ -27,22 +27,22 @@ const RecordCard = ({ record, index }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ delay: index * 0.05 }}
-      className='record'
+      className="record"
     >
       <div>
-        <img className='record-img' src={img} alt='cartoon of record' />
+        <img className="record-img" src={img} alt="cartoon of record" />
       </div>
 
-      <div className='record-info'>
+      <div className="record-info">
         <p>{title}</p>
         <p>
           {artist} - {year}
         </p>
       </div>
 
-      <div className='record-footer'>
-        <p className='record-footer-price'>{price} €</p>
-        <div className='record-footer-icon'>
+      <div className="record-footer">
+        <p className="record-footer-price">{price} €</p>
+        <div className="record-footer-icon">
           <FaShoppingCart onClick={() => addToCartHandler(record)} />
         </div>
       </div>
